@@ -1,0 +1,23 @@
+.item {
+    display:flex;
+    border: 1px solid black;
+    justify-content: space-between;
+    background-color: aliceblue;
+    padding: 10px 5px;
+}
+.spanText {
+    display: flex;
+    flex-direction: column;
+}
+.name {
+    margin: 5px;
+    color: black;
+    font-weight: 500;
+}
+.deleteBtn {
+    max-width: 100px;
+    max-height: 50px;
+    justify-content: center;
+    align-items: center;
+    
+}
