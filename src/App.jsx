@@ -2,6 +2,8 @@ import "./App.css";
 import ContactList from "./components/ContactList/ContactList";
 import SearchBox from "./components/SearchBox/SearchBox";
 import ContactForm from "./ContactForm/ContactForm";
+import { fetchContacts } from "./redux/contactsOps";
+import { selectError, selectIsLoading } from "./redux/selectors";
 function App() {
   return (
     <div>

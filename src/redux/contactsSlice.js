@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+import { fetchContacts } from "./contactsOps";
 const contactsSlice = createSlice({
   // Ім'я слайсу
   name: "contacts",
@@ -11,6 +11,8 @@ const contactsSlice = createSlice({
       { id: "id-3", name: "Eden Clements", number: "645-17-79" },
       { id: "id-4", name: "Annie Copeland", number: "227-91-26" },
     ],
+    isLoading: false,
+    error: null,
   },
   // Об'єкт редюсерів
   reducers: {
@@ -22,6 +24,22 @@ const contactsSlice = createSlice({
     addContact: (state, action) => {
       state.items.push(action.payload);
     },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchContacts.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchContacts.fulfilled, (state, action) => {
+        state.isLoading = false;
+         state.error = null;
+         state.items = action.payload;
+      })
+      .addCase(fetchContacts.rejected, (state,action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+    })
+     
   },
 });
  export const { addContact, deleteContact } = contactsSlice.actions;
