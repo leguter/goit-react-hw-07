@@ -9,25 +9,12 @@ const handleRejected = (state, action) => {
   state.error = action.payload;
 };
 const contactsSlice = createSlice({
-  // Ім'я слайсу
   name: "contacts",
-  // Початковий стан редюсера слайсу
   initialState: {
     items: [],
     isLoading: false,
     error: null,
   },
-  // Об'єкт редюсерів
-  // reducers: {
-  //   deleteContact: (state, action) => {
-  //     state.items = state.items.filter(
-  //       (contact) => contact.id !== action.payload
-  //     );
-  //   },
-  //   addContact: (state, action) => {
-  //     state.items.push(action.payload);
-  //   },
-  // },
   extraReducers: (builder) => {
     builder
       .addCase(fetchContacts.pending, handlePending)
@@ -55,8 +42,6 @@ const contactsSlice = createSlice({
      .addCase(deleteContact.rejected ,handleRejected)
   },
 });
-//  export const {  deleteContact } = contactsSlice.actions;
 export const selectContacts = (state) => state.contacts.items;
-// Редюсер  слайсу
 export const contactsReducer = contactsSlice.reducer;
 

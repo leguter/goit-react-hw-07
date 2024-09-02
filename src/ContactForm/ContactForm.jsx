@@ -12,8 +12,8 @@ const ContactForm = () => {
     userNumber: Yup.string().min(2, "Too Short!").max(12, "Too Long!").required("Required"),
   });
   const dispatch = useDispatch()
-  function addCard({ userName, userNumber }) {
-    dispatch(addContact({  name: userName, number: userNumber }));
+  function addCard(values) {
+    dispatch(addContact(values));
   }
   return (
     <Formik
