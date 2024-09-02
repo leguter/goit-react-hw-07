@@ -3,7 +3,7 @@ import css from './ContactForm.module.css'
 import { Field, Formik, Form, ErrorMessage } from "formik";
 import { nanoid } from "nanoid";
 import { useDispatch } from "react-redux";
-import { addContact } from "../redux/contactsSlice";
+import { addContact } from "../redux/contactsOps";
 const ContactForm = () => {
   const userNameId = nanoid();
   const userNumberId = nanoid();
@@ -13,7 +13,7 @@ const ContactForm = () => {
   });
   const dispatch = useDispatch()
   function addCard({ userName, userNumber }) {
-    dispatch(addContact({ id: nanoid(), name: userName, number: userNumber }));
+    dispatch(addContact({  name: userName, number: userNumber }));
   }
   return (
     <Formik
